@@ -2,6 +2,7 @@ import React, { useState ,useEffect} from 'react'
 import { View, Text, KeyboardAvoidingView, SafeAreaView, StyleSheet, TouchableOpacity, Platform, TextInput, StatusBar } from 'react-native'
 import SimpleLinesIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
+import Colors from './Colors';
 
 
 export default function Header({
@@ -37,7 +38,7 @@ export default function Header({
                     flexDirection: 'row',
                     alignItems: 'center',
                     padding: 15,
-                    backgroundColor: transparent ? 'white' : 'white',
+                    backgroundColor: Colors.primaryColor ,
                     paddingTop: !modal
                         ? Platform.OS === 'android'
                             ? 10
@@ -56,7 +57,7 @@ export default function Header({
                             navigation.canGoBack() && navigation.goBack();
                         }}>
                         <SimpleLinesIcons
-                            size={30}
+                            size={35}
                             name={modal ? 'arrow-down' : 'arrow-left'}
                         />
                     </TouchableOpacity>
@@ -65,9 +66,10 @@ export default function Header({
             <View >
                 <Text
                     style={{
-                        fontSize: child ? 14 : 18,
+                        fontSize: child ? 18 : 22,
                         textAlign: titleAlign ? titleAlign : 'left',
-                        paddingBottom: 5
+                        // paddingBottom: ,
+                        fontWeight:'bold'
                     }}>
                     {title}
                 </Text>
@@ -75,7 +77,7 @@ export default function Header({
                     <Text
                         style={{
                             color: 'grey',
-                            fontSize: 12,
+                            fontSize: 14,
                             textAlign: titleAlign ? titleAlign : 'left',
                         }}>
                         {subtitle}

@@ -16,35 +16,33 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Icon  from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './screens/HomeScreen';
 import AddPatient from './screens/AddPatient';
 import ListPatient from './screens/ListPatient';
 import ViewPatient from './screens/ViewPatient';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer, StackActions} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const stack = createNativeStackNavigator()
-
-
+const stack = createNativeStackNavigator();
 
 const App = () => {
-  return(
+  return (
     <NavigationContainer>
-    <stack.Navigator
-    initialRouteName='HomeScreen' component={HomeScreen}
-    screenOptions={{headerShown:false}}>
-  <stack.Screen name="HomeScreen" component={HomeScreen}/>
-  <stack.Screen name="AddPatient" component={AddPatient}/>
-  <stack.Screen name="ListPatient" component={ListPatient}/>
-  <stack.Screen name="ViewPatient" component={ViewPatient}/>
-  </stack.Navigator>
-  </NavigationContainer>
-  )
-}
+      <stack.Navigator
+        initialRouteName="HomeScreen"
+        component={HomeScreen}
+        screenOptions={{headerShown: false}}>
+        <stack.Screen name="HomeScreen" component={HomeScreen} />
+        <stack.Screen name="AddPatient" component={AddPatient} />
+        <stack.Screen name="ListPatient" component={ListPatient} />
+        <stack.Screen name="ViewPatient" component={ViewPatient} />
+      </stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default App;
-
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -64,5 +62,3 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
-
