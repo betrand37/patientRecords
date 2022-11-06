@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   View,
   Dimensions,
+  Input
 } from 'react-native';
 import Colors from '../components/Colors';
 import Header from '../components/Header';
@@ -28,37 +29,23 @@ export default function AddPatient({navigation}) {
           <Text style={{paddingVertical: 20}}>AGE</Text>
           <TextInput style={{borderBottomWidth: 2}} />
 
-          <Text style={{paddingTop: 20}}>AGE</Text>
+          <Text style={{paddingTop: 20}}>RECORDS</Text>
           <View style={styles.firstSection}>
-            <Text
-              style={{fontWeight: 'bold', color: 'white', marginBottom: 10}}>
-              WELCOME,
-            </Text>
-            <Text style={{fontWeight: 'bold', color: 'white'}}>
-              DOCTOR THEOPHILUS
-            </Text>
+          
+            <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
+            multiline={true}/>
           </View>
 
           <Text style={{paddingTop: 20}}>CLINICAL DATA</Text>
           <View style={styles.firstSection}>
-            <Text
-              style={{fontWeight: 'bold', color: 'white', marginBottom: 10}}>
-              WELCOME,
-            </Text>
-            <Text style={{fontWeight: 'bold', color: 'white'}}>
-              DOCTOR THEOPHILUS
-            </Text>
+          <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
+            multiline={true}/>
           </View>
 
           <Text style={{paddingTop: 20}}>CRITICAL CONDITION</Text>
           <View style={styles.firstSection}>
-            <Text
-              style={{fontWeight: 'bold', color: 'white', marginBottom: 10}}>
-              WELCOME,
-            </Text>
-            <Text style={{fontWeight: 'bold', color: 'white'}}>
-              DOCTOR THEOPHILUS
-            </Text>
+          <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
+            multiline={true}/>
           </View>
 
           <TouchableOpacity style={styles.doneButton}
@@ -79,8 +66,8 @@ const styles = StyleSheet.create({
   firstSection: {
     backgroundColor: Colors.primaryColor,
     height: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent:'',
+    // alignItems: 'center',
   },
   doneButton: {
     width: '100%',
