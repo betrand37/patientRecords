@@ -21,6 +21,8 @@ import HomeScreen from './screens/HomeScreen';
 import AddPatient from './screens/AddPatient';
 import ListPatient from './screens/ListPatient';
 import ViewPatient from './screens/ViewPatient';
+import PatientDetails from './screens/PatientDetails';
+
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -37,6 +39,7 @@ const App = () => {
         <stack.Screen name="AddPatient" component={AddPatient} />
         <stack.Screen name="ListPatient" component={ListPatient} />
         <stack.Screen name="ViewPatient" component={ViewPatient} />
+        <stack.Screen name="PatientDetails" component={PatientDetails} />
       </stack.Navigator>
     </NavigationContainer>
   );

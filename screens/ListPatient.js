@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,102 +9,70 @@ import {
   useColorScheme,
   TouchableOpacity,
   View,
+  FlatList,
+  ActivityIndicator
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../components/Colors';
 
 
-export default function ListPatient(){
+export default function ListPatient({navigation}){
+
+  const [itemIndex] = useState('')
+
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  const getPatients = async () => {
+    try {
+     const response = await fetch('http://192.168.0.21:3009/patientderver/get-all-patients');
+     const json = await response.json();
+     setData(json);
+   } catch (error) {
+     console.error(error);
+   } finally {
+    console.log(data)
+     setLoading(false);
+   }
+ }
+
+ useEffect(() => {
+  getPatients();
+}, []);
+
+
+
     return(
       <SafeAreaView style={{backgroundColor: Colors.secondary, flex:1}}>
         <Header title="PATIENT'S LIST" parent/>
-        <ScrollView
-        style={{flex:1, marginTop:20}}>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:35,fontWeight:'bold'}}>A</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>AARON MICHAEL</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>ABIGAIL SIMPSON</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2, marginBottom:13}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>ALLYSON ONLY</Text>
-          </View>
 
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:35,fontWeight:'bold'}}>B</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>BAILY GRE</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>BANS TEY</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2, marginBottom:13}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>BETRAND</Text>
-          </View>
+        {isLoading ? <ActivityIndicator/> : (
+        <FlatList
+          data={data}
+          keyExtractor={({ id }, index) => id}
+          renderItem={({ item }) => (
+   
+            <View>
+            {/* <View
+            style={{borderBottomColor:'#000',borderBottomWidth:2}}>
+            <Text
+            style={{marginHorizontal:20,fontSize:35,fontWeight:'bold'}}>{item.patientname[0]}</Text>
+            </View> */}
+            <View
+            style={{borderBottomColor:'#000',borderBottomWidth:2}}>
+              <TouchableOpacity
+              onPress={()=> navigation.navigate('PatientDetails',item)}>
+              <Text
+            style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>{item.patientname}</Text>
+              </TouchableOpacity>
+     
+            </View>
 
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:35,fontWeight:'bold'}}>C</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>CARL JOHNSON</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>CASEY</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2, marginBottom:13}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>CAB</Text>
-          </View>
-
-
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:35,fontWeight:'bold'}}>D</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>DARREN</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>DEN</Text>
-          </View>
-          <View
-          style={{borderBottomColor:'#000',borderBottomWidth:2, marginBottom:13}}>
-          <Text
-          style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>DERM ONLY</Text>
-          </View>
-        </ScrollView>
+            </View>
+          )}
+        />
+      )}
+ 
       </SafeAreaView>
     )
 }
