@@ -23,9 +23,9 @@ export default function ListPatient({navigation}){
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getMovies = async () => {
+  const getPatients = async () => {
     try {
-     const response = await fetch('http://192.168.2.150:3009/patientderver/get-all-patients');
+     const response = await fetch('http://192.168.0.21:3009/patientderver/get-all-patients');
      const json = await response.json();
      setData(json);
    } catch (error) {
@@ -37,7 +37,7 @@ export default function ListPatient({navigation}){
  }
 
  useEffect(() => {
-  getMovies();
+  getPatients();
 }, []);
 
 
