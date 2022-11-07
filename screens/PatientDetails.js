@@ -26,23 +26,6 @@ export default function PatientDetails({ navigation, route }){
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-//   const getMovies = async () => {
-//     try {
-//      const response = await fetch('http://192.168.2.150:3009/patientderver/get-all-patients');
-//      const json = await response.json();
-//      setData(json);
-//    } catch (error) {
-//      console.error(error);
-//    } finally {
-//     console.log(data)
-//      setLoading(false);
-//    }
-//  }
-
-//  useEffect(() => {
-//   getMovies();
-// }, []);
-
 
 
     return(
