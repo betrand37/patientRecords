@@ -27,7 +27,6 @@ export default function PatientDetails({ navigation, route }){
   const [data, setData] = useState([]);
 
 
-
     return(
       <SafeAreaView style={{backgroundColor: Colors.secondary, flex:1}}>
         <Header title="PATIENT'S DETAILS" parent/>
