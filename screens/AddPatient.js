@@ -24,6 +24,7 @@ export default function AddPatient({navigation}) {
   const [ address,setAdresss] = useState('');
   const [ phone,setPhone] = useState('');
   const [ gender,setGender] = useState('');
+  const [medicalRecord, setMedicalRecord] = useState('');
   
 
 
@@ -32,14 +33,23 @@ export default function AddPatient({navigation}) {
 const handleSubmit = (e) => {
   e.preventDefault();
  
-  fetch('http://192.168.0.21:3009/patientderver/add-patient', {
-     method: 'POST',
-     body: JSON.stringify({
-        patientname: fullName,
-        patientage: age,
-        patientaddress: address,
-        patientphone: phone,
-        patientgender: gender,
+  fetch('http://172.20.10.2:3000/patient/add', {
+     method: 'PUT',
+    
+     body: JSON.stringify(
+      {
+     patient_name:fullName,
+     patient_phone:phone,
+     patient_address:address,
+     patient_age:age,
+     patient_gender:gender,
+    // patient_medicalrecord : gender
+
+        // patientname: fullName,
+        // patientage: age,
+        // patientaddress: address,
+        // patientphone: phone,
+        // patientgender: gender,
         
      }),
      headers: {
