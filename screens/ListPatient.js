@@ -25,7 +25,7 @@ export default function ListPatient({navigation}){
 
   const getPatients = async () => {
     try {
-     const response = await fetch('http://192.168.0.21:3009/patientderver/get-all-patients');
+     const response = await fetch('http://172.20.10.2.:3000/patient/fetch');
      const json = await response.json();
      setData(json);
    } catch (error) {
