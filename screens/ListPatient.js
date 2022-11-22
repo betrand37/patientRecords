@@ -25,7 +25,7 @@ export default function ListPatient({navigation}){
 
   const getPatients = async () => {
     try {
-     const response = await fetch('http://172.20.10.2.:3000/patient/fetch');
+     const response = await fetch('http://localhost:3000/patient/fetch');
      const json = await response.json();
      setData(json);
    } catch (error) {
@@ -63,7 +63,7 @@ export default function ListPatient({navigation}){
               <TouchableOpacity
               onPress={()=> navigation.navigate('PatientDetails',item)}>
               <Text
-            style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>{item.patientname}</Text>
+            style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>{item.patient_name}</Text>
               </TouchableOpacity>
      
             </View>
