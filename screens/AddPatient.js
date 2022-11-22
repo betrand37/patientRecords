@@ -25,8 +25,7 @@ export default function AddPatient({navigation}) {
   const [ address,setAdresss] = useState('');
   const [ phone,setPhone] = useState('');
   const [ gender,setGender] = useState('');
- const [bloodlevel,setBloodLevel] = useState('');
- const [heartRate,setHeartRate] = useState('')
+ const [records,setRecords] = useState('');
 
 
 
@@ -44,7 +43,7 @@ const handleSubmit = (e) => {
      patient_address:address,
      patient_age:age,
      patient_gender:gender,
-     patient_medicalrecord:bloodlevel
+     patient_medicalrecord:records
 
      }),
      headers: {
@@ -96,11 +95,9 @@ const handleSubmit = (e) => {
           <View style={styles.firstSection}>
           
             <TextInput style={{fontWeight: 'bold', color: 'white',flex:1,borderBottomWidth:2}}
-            placeholder="Bloodlevel"
-            onChangeText={(e) => setBloodLevel(e)}/>
-              <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
-          placeholder="Heart rate"
-            onChangeText={(e) => setHeartRate(e)}/>
+            placeholder="Records"
+            onChangeText={(e) => setRecords(e)}/>
+             
           </View>
 
           <Text style={{paddingTop: 20}}>CLINICAL DATA</Text>

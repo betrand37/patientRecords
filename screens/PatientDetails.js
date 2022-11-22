@@ -46,7 +46,7 @@ export default function PatientDetails({ navigation, route }){
                    <Text
             style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Phone: {detail.patient_phone}</Text>
                                <Text
-            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Medical records: {detail.patient_medicalrecords}</Text>
+            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Medical records: {detail.patient_medicalrecord}</Text>
               </TouchableOpacity>
      
             </View>
