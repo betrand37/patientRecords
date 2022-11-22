@@ -16,6 +16,7 @@ import Colors from '../components/Colors';
 import { Ref } from 'react';
 import Header from '../components/Header';
 
+
 export default function AddPatient({navigation}) {
 
 
@@ -24,8 +25,8 @@ export default function AddPatient({navigation}) {
   const [ address,setAdresss] = useState('');
   const [ phone,setPhone] = useState('');
   const [ gender,setGender] = useState('');
-  const [medicalRecord, setMedicalRecord] = useState('');
-  
+ const [bloodlevel,setBloodLevel] = useState('');
+ const [heartRate,setHeartRate] = useState('')
 
 
 
@@ -33,8 +34,8 @@ export default function AddPatient({navigation}) {
 const handleSubmit = (e) => {
   e.preventDefault();
  
-  fetch('http://172.20.10.2:3000/patient/add', {
-     method: 'PUT',
+  fetch('http://localhost:3000/patient/add', {
+     method: 'POST',
     
      body: JSON.stringify(
       {
@@ -43,31 +44,34 @@ const handleSubmit = (e) => {
      patient_address:address,
      patient_age:age,
      patient_gender:gender,
-    // patient_medicalrecord : gender
+     patient_medicalrecord:bloodlevel
 
-        // patientname: fullName,
-        // patientage: age,
-        // patientaddress: address,
-        // patientphone: phone,
-        // patientgender: gender,
-        
      }),
      headers: {
         'Content-type': 'application/json; charset=UTF-8',
      },
   })
      .then((res) => res.json())
-     .then(() => {
-        setFullName('');
-        setAge('');
-        setGender('');
-        setAdresss('');
-        setPhone('')
+     .then((res) => {
+      console.log(res)
      })
      .catch((err) => {
         console.log(err.message);
      });
+
+  // axios.post('http://localhost:3000/patient/add', {
+  //   patient_name:fullName,
+  //    patient_phone:phone,
+  //    patient_address:address,
+  //    patient_age:age,
+  //    patient_gender:gender,
+  //    patient_medicalrecord:bloodlevel
+  // })
+  // .then(function (response) {
+  //   console.log(response);
+  // })
 };
+
 
 
 
@@ -91,16 +95,23 @@ const handleSubmit = (e) => {
           <Text style={{paddingTop: 20}}>RECORDS</Text>
           <View style={styles.firstSection}>
           
-            <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
-            multiline={true}
-            onChangeText={(e) => setPhone(e)}/>
+            <TextInput style={{fontWeight: 'bold', color: 'white',flex:1,borderBottomWidth:2}}
+            placeholder="Bloodlevel"
+            onChangeText={(e) => setBloodLevel(e)}/>
+              <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
+          placeholder="Heart rate"
+            onChangeText={(e) => setHeartRate(e)}/>
           </View>
 
           <Text style={{paddingTop: 20}}>CLINICAL DATA</Text>
           <View style={styles.firstSection}>
-          <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
-            multiline={true}
+          <TextInput style={{fontWeight: 'bold', color: 'white',flex:1,borderBottomWidth:2}}
+          placeholder="Gender"
             onChangeText={(e) => setGender(e)}
+        />
+          <TextInput style={{fontWeight: 'bold', color: 'white',flex:1}}
+     placeholder="phone"
+            onChangeText={(e) => setPhone(e)}
         />
           </View>
 
@@ -128,8 +139,8 @@ const styles = StyleSheet.create({
   },
   firstSection: {
     backgroundColor: Colors.primaryColor,
-    height: 150,
-    // justifyContent:'',
+    height: 80,
+    justifyContent:'space-evenly',
     // alignItems: 'center',
   },
   doneButton: {

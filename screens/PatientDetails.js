@@ -36,15 +36,17 @@ export default function PatientDetails({ navigation, route }){
               <TouchableOpacity
              >
               <Text
-            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Name: {detail.patientname}</Text>
+            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Name: {detail.patient_name}</Text>
                    <Text
-            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Age: {detail.patientage}</Text>
+            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Age: {detail.patient_age}</Text>
                    <Text
-            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Gender: {detail.patientgender}</Text>
+            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Gender: {detail.patient_gender}</Text>
                    <Text
-            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Address: {detail.patientaddress}</Text>
+            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Address: {detail.patient_address}</Text>
                    <Text
-            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Phone: {detail.patientphone}</Text>
+            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Phone: {detail.patient_phone}</Text>
+                               <Text
+            style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Medical records: {detail.patient_medicalrecords}</Text>
               </TouchableOpacity>
      
             </View>
