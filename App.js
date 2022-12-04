@@ -25,6 +25,10 @@ import PatientDetails from './screens/PatientDetails';
 
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Slider from './components/onBoarding/Slider';
+import SignUp from './components/onBoarding/SignUp';
+import SignIn from './components/onBoarding/SignIn';
+
 
 const stack = createNativeStackNavigator();
 
@@ -32,9 +36,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <stack.Navigator
-        initialRouteName="HomeScreen"
-        component={HomeScreen}
+        initialRouteName="SignUp"
+        component={SignUp}
         screenOptions={{headerShown: false}}>
+        <stack.Screen name="SignUp" component={SignUp} />
+        <stack.Screen name="SignIn" component={SignIn} />
         <stack.Screen name="HomeScreen" component={HomeScreen} />
         <stack.Screen name="AddPatient" component={AddPatient} />
         <stack.Screen name="ListPatient" component={ListPatient} />
