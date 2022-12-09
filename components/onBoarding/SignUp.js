@@ -25,7 +25,7 @@ export default function SignUp({ navigation }, props) {
                 flex: 1
             }}>
             <SafeAreaView style={styles.androidSafeArea}>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     activeOpacity={0.8}
                     style={{ paddingRight: 10 }}
                     onPress={() => {
@@ -35,7 +35,7 @@ export default function SignUp({ navigation }, props) {
                         size={20}
                         name={'arrow-left'}
                     />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 <View
                     style={{
                         paddingTop: '20%',
