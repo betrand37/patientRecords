@@ -14,9 +14,12 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../components/Colors';
+import { Swipeable } from 'react-native-gesture-handler';
 
 
 export default function PatientDetails({ navigation, route }){
+
+ 
 
 
     const detail = route.params
@@ -26,6 +29,12 @@ export default function PatientDetails({ navigation, route }){
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
+  const rightSwipe = () => {
+  <View>
+    <Text>Delete</Text>
+  </View>
+}
+
 
     return(
       <SafeAreaView style={{backgroundColor: Colors.secondary, flex:1}}>
@@ -33,7 +42,7 @@ export default function PatientDetails({ navigation, route }){
 
             <View
             style={{borderBottomColor:'#000'}}>
-              <TouchableOpacity
+              <Swipeable renderLeftActions={rightSwipe}
              >
               <Text
             style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Name: {detail.patient_name}</Text>
@@ -47,7 +56,7 @@ export default function PatientDetails({ navigation, route }){
             style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Phone: {detail.patient_phone}</Text>
                                <Text
             style={{marginHorizontal:20,fontSize:28,fontWeight:'300'}}>Medical records: {detail.patient_medicalrecord}</Text>
-              </TouchableOpacity>
+              </Swipeable>
      
             </View>
           
