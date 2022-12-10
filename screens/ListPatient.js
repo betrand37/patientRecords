@@ -14,6 +14,9 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 import Colors from '../components/Colors';
+import { Swipeable } from 'react-native-gesture-handler';
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
 
 
 export default function ListPatient({navigation}){
@@ -30,7 +33,8 @@ export default function ListPatient({navigation}){
      setData(json);
    } catch (error) {
      console.error(error);
-   } finally {
+   } 
+   finally {
     console.log(data)
      setLoading(false);
    }
@@ -40,6 +44,20 @@ export default function ListPatient({navigation}){
   getPatients();
 }, []);
 
+deleteItemById = id => {
+  const filteredData = data.filter(item => item.id !== id);
+  setData(filteredData)
+
+//   useEffect(() => {
+//     // DELETE request using axios with async/await
+//     async function deletePost() {
+//         await axios.delete(`http://localhost:3000/patient/delete/${id}`);
+//         setStatus('Delete successful');
+//     }
+
+//     deletePost();
+// }, []);
+}
 
 
     return(
@@ -51,24 +69,33 @@ export default function ListPatient({navigation}){
           data={data}
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
-   
+            
             <View>
-            {/* <View
-            style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-            <Text
-            style={{marginHorizontal:20,fontSize:35,fontWeight:'bold'}}>{item.patientname[0]}</Text>
-            </View> */}
-            <View
-            style={{borderBottomColor:'#000',borderBottomWidth:2}}>
-              <TouchableOpacity
-              onPress={()=> navigation.navigate('PatientDetails',item)}>
-              <Text
-            style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>{item.patient_name}</Text>
-              </TouchableOpacity>
-     
-            </View>
+        
+              <View
+              style={{borderBottomColor:'#000',borderBottomWidth:2, flexDirection:'row', justifyContent:'space-between', alignContent:'center'}}>      
+                <TouchableOpacity
+                onPress={()=> navigation.navigate('PatientDetails',item)}>
+                <Text
+              style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>{item.patient_name}</Text>
+                </TouchableOpacity>
 
+                <TouchableOpacity
+                onPress={()=> this.deleteItemById(item.id)}>
+                   <Ionicons name="trash-outline" size={28} color="red"
+                                style={{
+                                    alignSelf: 'center',
+
+                     }} />
+                </TouchableOpacity>
+
+
+
+      
+              </View>
+       
             </View>
+         
           )}
         />
       )}
