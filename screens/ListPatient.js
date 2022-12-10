@@ -75,7 +75,7 @@ deleteItemById = id => {
               <View
               style={{borderBottomColor:'#000',borderBottomWidth:2, flexDirection:'row', justifyContent:'space-between', alignContent:'center'}}>      
                 <TouchableOpacity
-                onPress={()=> navigation.navigate('PatientDetails',item)}>
+                onPress={()=> navigation.navigate('ViewPatient',item)}>
                 <Text
               style={{marginHorizontal:20,fontSize:31,fontWeight:'300'}}>{item.patient_name}</Text>
                 </TouchableOpacity>

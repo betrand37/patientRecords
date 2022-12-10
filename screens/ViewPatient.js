@@ -13,7 +13,9 @@ import {
 import Header from '../components/Header';
 import Colors from '../components/Colors';
 
-export default function ViewPatient({navigation}) {
+export default function ViewPatient({navigation, route}) {
+
+  const detail = route.params
 
   const[openClinical,setOpenClinical] = useState(false);
   const[openRecords,setOpenRecords] = useState(false);
@@ -62,7 +64,7 @@ export default function ViewPatient({navigation}) {
         <View style={{alignSelf: 'center'}}>
           <View style={styles.firstSection}></View>
           <Text style={{alignSelf: 'center', fontSize: 20, fontWeight: 'bold'}}>
-            John Doe
+          {detail.patient_name}
           </Text>
         </View>
         <TouchableOpacity style={styles.addPatient}
@@ -73,7 +75,7 @@ export default function ViewPatient({navigation}) {
         <View style={styles.openSection}>
            
             <Text style={{fontWeight: 'bold', color: 'white'}}>
-              lorem 
+            {detail.patient_medicalrecord} 
             </Text>
           </View>
 : <></>}
@@ -86,13 +88,13 @@ export default function ViewPatient({navigation}) {
         </TouchableOpacity>
         {openClinical === true ?
         <View style={styles.openSection}>
+         <Text style={{marginHorizontal:20,fontSize:18,fontWeight:'300'}}>Age: {detail.patient_age}</Text>
+         <Text
+          style={{marginHorizontal:20,fontSize:18,fontWeight:'300'}}>Gender: {detail.patient_gender}</Text>
+         <Text
+          style={{marginHorizontal:20,fontSize:18,fontWeight:'300'}}>Address: {detail.patient_address}</Text>
             <Text
-              style={{fontWeight: 'bold', color: 'white', marginBottom: 10}}>
-              WELCOME,
-            </Text>
-            <Text style={{fontWeight: 'bold', color: 'white'}}>
-              DOCTOR THEOPHILUS
-            </Text>
+           style={{marginHorizontal:20,fontSize:18,fontWeight:'300'}}>Phone: {detail.patient_phone}</Text>
           </View>
 : <></>}
 
