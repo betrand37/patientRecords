@@ -44,13 +44,13 @@ export default function HomeScreen({navigation}) {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.addPatient}
           onPress={() => navigation.navigate('ViewPatient')}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>
             VIEW PATIENT RECORD
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
   
       </View>
