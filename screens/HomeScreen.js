@@ -38,19 +38,21 @@ export default function HomeScreen({navigation}) {
 
         <TouchableOpacity
           style={styles.addPatient}
-          onPress={() => navigation.navigate('ViewPatient')}>
-          <Text style={{color: 'white', fontWeight: 'bold'}}>
-            VIEW PATIENT RECORD
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.addPatient}
           onPress={() => navigation.navigate('ListPatient')}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>
             LIST ALL PATIENTS
           </Text>
         </TouchableOpacity>
+
+        {/* <TouchableOpacity
+          style={styles.addPatient}
+          onPress={() => navigation.navigate('ViewPatient')}>
+          <Text style={{color: 'white', fontWeight: 'bold'}}>
+            VIEW PATIENT RECORD
+          </Text>
+        </TouchableOpacity> */}
+
+  
       </View>
     </SafeAreaView>
   );

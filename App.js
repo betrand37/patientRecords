@@ -25,7 +25,6 @@ import PatientDetails from './screens/PatientDetails';
 
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Slider from './components/onBoarding/Slider';
 import SignUp from './components/onBoarding/SignUp';
 import SignIn from './components/onBoarding/SignIn';
 
